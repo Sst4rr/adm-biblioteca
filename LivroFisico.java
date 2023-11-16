@@ -2,12 +2,20 @@
 // Classe LivroFisico como extensão de Livro
 class LivroFisico extends Livro {
     // Atributos específicos para livros físicos, se houver
-    private int quantidadeDisponivel;
+    private int copiasDisponiveis;
 
-    public LivroFisico(int id, String titulo, String autor, int quantidadeDisponivel) {
-        super(id, titulo, autor);
-        this.quantidadeDisponivel = quantidadeDisponivel;
+    public LivroFisico(String titulo, String anoPublicacao, String autor, int copiasDisponiveis) {
+        super(titulo, anoPublicacao, autor);
+        this.copiasDisponiveis = copiasDisponiveis;
     }
 
     // getters e setters
+
+    public int copiasDisponiveis(){
+        return this.copiasDisponiveis();
+    }
+
+    public void setCopiasDisponiveis(int copiasDisponiveis){
+        this.copiasDisponiveis = copiasDisponiveis;
+    }
 }
