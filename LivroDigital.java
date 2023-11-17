@@ -10,8 +10,8 @@ class LivroDigital extends Livro {
     // Atributos específicos para livros digitais, se houver
     private String formato;
 
-    public LivroDigital(int id, String titulo, String autor, String formato) {
-        super(id, titulo, autor);
+    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato) {
+        super(titulo, anoPublicacao, autor);
         this.formato = formato;
     }
 

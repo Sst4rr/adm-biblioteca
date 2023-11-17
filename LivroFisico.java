@@ -18,4 +18,16 @@ class LivroFisico extends Livro {
     public void setCopiasDisponiveis(int copiasDisponiveis){
         this.copiasDisponiveis = copiasDisponiveis;
     }
+
+    //função emprestar
+    public void emprestar(){
+        if(this.copiasDisponiveis > 0){
+            this.copiasDisponiveis--;
+        }
+    }
+
+    //função devolver
+    public void devolver(){
+        this.copiasDisponiveis++;
+    }
 }
