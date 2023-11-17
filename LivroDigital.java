@@ -16,4 +16,17 @@ class LivroDigital extends Livro {
     }
 
     // getters e setters
+        // Método get//
+
+        public String getFormato() {
+            return formato;
+        }
+    
+        // Método set//
+    
+        public void getFormato(String novoFormato) {
+            this.formato = novoFormato;
+        }
+    
+    }
 }

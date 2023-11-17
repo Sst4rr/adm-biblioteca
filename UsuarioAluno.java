@@ -4,14 +4,27 @@ import java.util.List;
 import java.util.Map;
 
 // Classe UsuarioAluno como extensão de Usuario
-class UsuarioAluno extends Usuario {
-    // Atributos específicos para alunos, se houver
-    private List<Livro> livrosEmprestados;
+class UsuarioAluno extends Usuario{
+    //Váriaveis//
+   private long matricula;
 
-    public UsuarioAluno(int id, String nome) {
-        super(id, nome);
-        this.livrosEmprestados = new ArrayList<>();
+   //Construtores// 
+   public UsuarioAluno(String nome, int idade, char sexo, int iD, long matricula){
+        super(nome, idade, sexo, iD);
+        this.matricula = matricula;
+   }
+
+    //Métodos Get//
+
+    public long setMatricula(){
+        return matricula;
     }
 
-    // métodos específicos para alunos, como empréstimo de livros digitais
+
+    //Métodos Set//
+
+    public void getMatricula(long novaMatricula){
+        this.matricula = novaMatricula;
+    }
+
 }
