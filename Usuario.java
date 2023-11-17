@@ -1,49 +1,12 @@
-// // public class Usuario {
-// //     private String nome;
-// //     private int idade;
 
-// //     public Usuario(String nome, int idade){
-// //         this.nome = nome;
-// //         this.idade = idade;
-// //     }
-
-// //     public String getNome(){
-// //         return this.nome;
-// //     }
-
-// //     public int getIdade(){
-// //         return this.idade;
-// //     }
-
-// //     public void setNome(String nome){
-// //         validarNome(nome);
-// //         this.nome = nome;
-// //     }
-// // }
-
-
-
-// // Classe Usuario como classe mãe
-// class Usuario {
-//     private int id;
-//     private String nome;
-//     // outros atributos comuns a usuários
-
-//     public Usuario(int id, String nome) {
-//         this.id = id;
-//         this.nome = nome;
-//     }
-
-//     // getters e setters
-// }
-
+import java.util.List;
 
 public class Usuario {
         //Variáveis//
     private String nome;
-    private int idade;
-    private char sexo;
-    private int iD;
+    private List<livrosEmprestados> livrosEmprestados;
+    private List<LivrosBaixado> livrosBaixados;
+    private List<livroEmPosse> livroFisico;
 
         //Construtores//
 
@@ -93,4 +56,14 @@ public class Usuario {
     public void setId(int novoID){
         this.iD = novoID;
     }
+
+    //pegarLivro 
+
+
+
+    public void devolverLivro(LivroFisico livro){
+        this.livrosEmprestados.remove(livro);
+        Livro devolverLivro = new devolver()
+    }
+
 }

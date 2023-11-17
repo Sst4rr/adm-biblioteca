@@ -27,7 +27,7 @@ class LivroFisico extends Livro {
     }
 
     //função devolver
-    public void devolver(){
+    public void devolver(String titulo){
         this.copiasDisponiveis++;
     }
 }
