@@ -1,17 +1,28 @@
     
-// Classe Livro como classe mãe
+/**
+ * Classe mãe Livro
+ * 
+ * Classe que representa um livro
+ * 
+ * @version 1.0
+ */
 class Livro {
     private String titulo;
     private String anoPublicacao;
     private String autor;
 
+    /**
+     * Construtor da classe Livro.
+     * @param titulo 
+     * @param anoPublicacao
+     * @param autor
+     */
     public Livro(String titulo, String anoPublicacao, String autor) {
         this.titulo = titulo;
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
     }
 
-    // getter
     
     public String getTitulo(){
         return this.titulo;
@@ -25,8 +36,6 @@ class Livro {
         return this.anoPublicacao;
     }
     
-    //setters
-
     public void setTitulo(String titulo){
         this.titulo = titulo;
     }

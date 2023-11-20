@@ -1,9 +1,20 @@
+/**
+ * Classe LivroDigital
+ */
+
 public class LivroDigital extends Livro {
     private String formato;
     private int tamanho;
     private String URL;
 
-    // Construtor
+    /**
+     * Construtor da classe LivroDigital.
+     * @param titulo
+     * @param autor
+     * @param formato
+     * @param tamanho
+     * @param URL
+     */
     public LivroDigital(String titulo, String autor, String formato, int tamanho, String URL) {
         super(titulo, autor);
         this.formato = formato;
@@ -11,7 +22,6 @@ public class LivroDigital extends Livro {
         this.URL = URL;
     }
 
-    // Getters e Setters
     public String getFormato() {
         return formato;
     }
@@ -36,9 +46,11 @@ public class LivroDigital extends Livro {
         this.URL = URL;
     }
 
-    // Método para baixar o livro
+    /**
+     * Método para baixar um livro.
+     * @return Mensagem de dowload do livro
+     */
     public String baixarLivro() {
-        // Lógica simulada de baixar o livro
         return "Livro '" + this.getTitulo() + "' baixado com sucesso do seguinte URL: " + this.URL;
     }
 }
