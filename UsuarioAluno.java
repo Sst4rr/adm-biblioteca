@@ -1,30 +1,24 @@
-// import java.util.ArrayList;
-// import java.util.HashMap;
-// import java.util.List;
-// import java.util.Map;
 
-// Classe UsuarioAluno como extensão de Usuario
-class UsuarioAluno extends Usuario{
-    //Váriaveis//
-   private long matricula;
 
-   //Construtores// 
-   public UsuarioAluno(String nome, int idade, char sexo, int iD, long matricula){
-        super(nome, idade, sexo, iD);
+public class UsuarioAluno extends Usuario{
+    private int matricula;
+    private static final int MAX_LIVROS_ALUNO = 5;
+
+    public UsuarioAluno (String nome, int matricula){
+        super(nome);
         this.matricula = matricula;
-   }
+    }
 
-    //Métodos Get//
-
-    public long setMatricula(){
+    public int getMatricula(){
         return matricula;
     }
 
-
-    //Métodos Set//
-
-    public void getMatricula(long novaMatricula){
-        this.matricula = novaMatricula;
+    @Override
+    protected int getMaxLivrosPermitidos() {
+        return MAX_LIVROS_ALUNO;
     }
+
+
+
 
 }

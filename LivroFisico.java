@@ -20,14 +20,14 @@ class LivroFisico extends Livro {
     
 
     //função emprestar
-    public void emprestar(){
+    public void emprestarlivro(Usuario usuario){
         if(this.copiasDisponiveis > 0){
             this.copiasDisponiveis--;
         }
     }
 
     //função devolver
-    public void devolver(String titulo){
+    public void devolverlivro(Usuario usuario){
         this.copiasDisponiveis++;
     }
 }
