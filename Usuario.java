@@ -56,13 +56,19 @@ public abstract class Usuario{
     }
 
 
+  
     /**
      * Método para devolver um livro emprestado.
-     * @param livro
+     * @param livro O livro físico a ser devolvido.
+     * @throws Exception Exceção lançada caso o usuário não tenha o livro emprestado.
      */
-    public void devolverLivro(LivroFisico livro) {
-        livrosEmprestados.remove(livro);
-        livro.devolverlivro(this);
+    public void devolverLivro(LivroFisico livro) throws Exception {
+        if (livrosEmprestados.contains(livro)) {
+            livrosEmprestados.remove(livro);
+            livro.devolverlivro(this);
+        } else {
+            throw new Exception("Livro não emprestado para você!.");
+        }
     }
 
 
