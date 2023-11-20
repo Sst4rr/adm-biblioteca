@@ -1,8 +1,3 @@
-// import java.util.ArrayList;
-// import java.util.HashMap;
-// import java.util.List;
-// import java.util.Map;
-
 public class LivroDigital extends Livro {
     private String formato;
     private int tamanho;
