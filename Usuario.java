@@ -1,69 +1,31 @@
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-        //Variáveis//
     private String nome;
-    private List<livrosEmprestados> livrosEmprestados;
-    private List<LivrosBaixado> livrosBaixados;
-    private List<livroEmPosse> livroFisico;
+    private List<LivroFisico> livrosEmprestados;
+    private List<LivroDigital> livrosBaixados;
+    private List<LivroFisico> livrosEmPosse;
 
-        //Construtores//
-
-    public Usuario(String nome, int idade, char sexo, int iD){
+    // Construtor
+    public Usuario(String nome) {
         this.nome = nome;
-        this.idade = idade;
-        this.sexo = sexo;
-        this.iD = iD;
+        this.livrosEmprestados = new ArrayList<>();
+        this.livrosBaixados = new ArrayList<>();
+        this.livrosEmPosse = new ArrayList<>();
     }
 
-        //Métodos get//
-
-    public String getNome(){
-        return this.nome;
+    // Métodos
+    public void pegarLivro(LivroFisico livro) {
+        livrosEmprestados.add(livro);
     }
 
-    public int getIdade(){
-        return this.idade;
+    public void devolverLivro(LivroFisico livro) {
+        livrosEmprestados.remove(livro);
     }
 
-    
-    public char getSexo(){
-        return sexo;
+    public String baixarLivro(LivroDigital livro) {
+        livrosBaixados.add(livro);
+        return "Livro '" + livro.getTitulo() + "' baixado com sucesso.";
     }
-
-    public int getId(){
-        return iD;
-    }   
-
-
-        //Métodos set//
-
-
-    public void setNome(String nome){
-        //validarNome(nome);
-        this.nome = nome;
-    }
-
-    public void setIdade(int novaIdade){
-        this.idade = novaIdade;
-    }
-    
-    public void setSexo(char novoSexo){
-        this.sexo = novoSexo;
-    }
-    
-    public void setId(int novoID){
-        this.iD = novoID;
-    }
-
-    //pegarLivro 
-
-
-
-    public void devolverLivro(LivroFisico livro){
-        this.livrosEmprestados.remove(livro);
-        Livro devolverLivro = new devolver()
-    }
-
 }
