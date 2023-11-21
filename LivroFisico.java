@@ -35,6 +35,8 @@ class LivroFisico extends Livro {
     public void emprestarlivro(Usuario usuario){
         if(this.copiasDisponiveis > 0){
             this.copiasDisponiveis--;
+        }else{
+            System.out.println("Não há mais exemplares disponíveis. Tente de novo futuramente!");
         }
     }
 
