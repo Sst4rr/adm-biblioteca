@@ -54,7 +54,7 @@ public class Biblioteca {
         for (Usuario usuario : usuarios) {
             if (usuario instanceof UsuarioProfessor && ((UsuarioProfessor) usuario).getcodigo() == idBusca) {
                 return usuario;
-            } else if (usuario instanceof UsuarioAluno && ((UsuarioAluno) usuario).getMatricula().equals(idBusca)) {
+            } else if (usuario instanceof UsuarioAluno && ((UsuarioAluno) usuario).getMatricula() == idBusca) {
                 return usuario;
             }
         }
