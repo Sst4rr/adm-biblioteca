@@ -10,13 +10,14 @@ public class LivroDigital extends Livro {
     /**
      * Construtor da classe LivroDigital.
      * @param titulo
+     * @param anoPublicacao
      * @param autor
      * @param formato
      * @param tamanho
      * @param URL
      */
-    public LivroDigital(String titulo, String autor, String formato, int tamanho, String URL) {
-        super(titulo, autor);
+    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, int tamanho, String URL) {
+        super(titulo, anoPublicacao, autor);
         this.formato = formato;
         this.tamanho = tamanho;
         this.URL = URL;
