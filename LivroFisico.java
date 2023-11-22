@@ -55,7 +55,7 @@ class LivroFisico extends Livro {
      * 
      * @param usuario O usuário que está devolvendo o livro.
      */
-    public void devolverlivro(Usuario usuario) {
+    public void devolverlivro(Usuario usuario, LivroFisico livro) {
         this.copiasDisponiveis++;
         this.status = "Disponível";
     }

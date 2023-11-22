@@ -4,7 +4,7 @@
 
 public class LivroDigital extends Livro {
     private String formato;
-    private int tamanho;
+    private double tamanho;
     private String URL;
 
     /**
@@ -16,7 +16,7 @@ public class LivroDigital extends Livro {
      * @param tamanho
      * @param URL
      */
-    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, int tamanho, String URL) {
+    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, double tamanho, String URL) {
         super(titulo, anoPublicacao, autor);
         this.formato = formato;
         this.tamanho = tamanho;
@@ -31,11 +31,11 @@ public class LivroDigital extends Livro {
         this.formato = formato;
     }
 
-    public int getTamanho() {
+    public double getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(int tamanho) {
+    public void setTamanho(double tamanho) {
         this.tamanho = tamanho;
     }
 

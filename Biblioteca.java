@@ -44,11 +44,7 @@ public class Biblioteca {
         u.pegarLivro(l);
     }
 
-    public void devolverEmprestimo(Usuario u, Livro l) {
-        u.devolverLivro(l);
-        livrosEmprestados.remove(l);
-    }
-
+    
     public Usuario buscarUsuario(int idBusca) {
         for (Usuario usuario : usuarios) {
             if (usuario instanceof UsuarioProfessor && ((UsuarioProfessor) usuario).getcodigo() == idBusca) {
