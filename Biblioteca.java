@@ -24,7 +24,7 @@ public class Biblioteca {
         return livrosEncontrados;
     }
 
-    public void realizarEmprestimo(Usuario u, Livro l) throws Exception {
+    public void realizarEmprestimo(Usuario u, LivroFisico l) throws Exception {
         if (!usuarios.contains(u)) {
             throw new Exception("Usuário não cadastrado na biblioteca.");
         }
@@ -37,12 +37,11 @@ public class Biblioteca {
         if (u.getLivrosEmprestados().contains(l)) {
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
-        if (l.Emprestar()) {
+        if (l.emprestarlivro(u)) {
             throw new Exception("Este livro já está emprestado.");
         }
 
         u.pegarLivro(l);
-        livrosEmprestados.add(l);
     }
 
     public void devolverEmprestimo(Usuario u, Livro l) {

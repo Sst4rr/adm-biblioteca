@@ -5,6 +5,7 @@
 class LivroFisico extends Livro {
 
     private int copiasDisponiveis;
+    private String status;
 
     /**
      * Construtor da classe LivroFisico.
@@ -17,9 +18,13 @@ class LivroFisico extends Livro {
     public LivroFisico(String titulo, String anoPublicacao, String autor, int copiasDisponiveis) {
         super(titulo, anoPublicacao, autor);
         this.copiasDisponiveis = copiasDisponiveis;
+        this.status = "Disponível";
     }
 
-    // teste
+
+    public String getStatus(){
+        return this.status;
+    }
 
     public int getCopiasDisponiveis() {
         return this.copiasDisponiveis;
@@ -34,11 +39,14 @@ class LivroFisico extends Livro {
      * 
      * @param usuario O usuário que está emprestando o livro
      */
-    public void emprestarlivro(Usuario usuario) {
+    public boolean emprestarlivro(Usuario usuario) {
         if (this.copiasDisponiveis > 0) {
             this.copiasDisponiveis--;
+            this.status = "Emprestado";
+            return true;
         } else {
             System.out.println("Não há mais exemplares disponíveis. Tente de novo futuramente!");
+            return false;
         }
     }
 
@@ -49,5 +57,6 @@ class LivroFisico extends Livro {
      */
     public void devolverlivro(Usuario usuario) {
         this.copiasDisponiveis++;
+        this.status = "Disponível";
     }
 }
