@@ -39,11 +39,11 @@ class LivroFisico extends Livro {
      * 
      * @param usuario O usuário que está emprestando o livro
      */
-    public boolean emprestarlivro(Usuario usuario) {
+    public boolean emprestarlivro() {
         if (this.copiasDisponiveis > 0) {
             this.copiasDisponiveis--;
             this.status = "Emprestado";
-            return true;
+            return true;    
         } else {
             System.out.println("Não há mais exemplares disponíveis. Tente de novo futuramente!");
             return false;
@@ -55,7 +55,7 @@ class LivroFisico extends Livro {
      * 
      * @param usuario O usuário que está devolvendo o livro.
      */
-    public void devolverlivro(Usuario usuario, LivroFisico livro) {
+    public void devolverlivro() {
         this.copiasDisponiveis++;
         this.status = "Disponível";
     }

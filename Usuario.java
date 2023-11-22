@@ -43,17 +43,17 @@ public abstract class Usuario{
      * @param livro O livro físico a ser emprestado
      * @throws Exception Exceção lançada caso o usuário já tenha o livro emprestado ou já tenha atingido o limite de livros permitidos.
      */
-    public void pegarLivro(LivroFisico livro) throws Exception {
+  public void pegarLivro(LivroFisico livro) throws Exception {
         if (livrosEmprestados.contains(livro)) {
-            throw new Exception("Livro já emprestado para você!.");
+            throw new Exception("Livro já emprestado para você!");
         } else if (livrosEmprestados.size() >= getMaxLivrosPermitidos()) {
             throw new Exception("Você já possui o número máximo de livros permitidos.");
-        }else{
+        } else {
             livrosEmprestados.add(livro);
-            livro.emprestarlivro(this);
+            livro.emprestarlivro(); // Chamada direta ao método emprestarlivro() de LivroFisico
         }
-        
     }
+        
 
 
   
@@ -62,13 +62,9 @@ public abstract class Usuario{
      * @param livro O livro físico a ser devolvido.
      * @throws Exception Exceção lançada caso o usuário não tenha o livro emprestado.
      */
-    public void devolverLivro(LivroFisico livro) throws Exception {
-        if (livrosEmprestados.contains(livro)) {
-            livrosEmprestados.remove(livro);
-            livro.devolverlivro(this);
-        } else {
-            throw new Exception("Livro não emprestado para você!.");
-        }
+    public void devolverLivro(LivroFisico livro){
+        livrosEmprestados.remove(livro);
+        livro.devolverlivro();
     }
 
 

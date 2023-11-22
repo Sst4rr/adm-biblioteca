@@ -24,26 +24,34 @@ public class Biblioteca {
         return livrosEncontrados;
     }
 
-    public void realizarEmprestimo(Usuario u, LivroFisico l) throws Exception {
+    public void realizarEmprestimo(Usuario u, LivroFisico livro) throws Exception {
         if (!usuarios.contains(u)) {
             throw new Exception("Usuário não cadastrado na biblioteca.");
         }
-        if (!livros.contains(l)) {
+        if (!livros.contains(livro)) {
             throw new Exception("Livro não disponível na biblioteca.");
         }
         if (u instanceof UsuarioAluno && u.getLivrosEmprestados().size() >= 5) {
             throw new Exception("Limite de empréstimos atingido para alunos.");
         }
-        if (u.getLivrosEmprestados().contains(l)) {
+        if (u.getLivrosEmprestados().contains(livro)) {
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
-        if (l.emprestarlivro(u)) {
+        if (livro.emprestarlivro()) {
             throw new Exception("Este livro já está emprestado.");
         }
 
-        u.pegarLivro(l);
+        u.pegarLivro(livro);
     }
 
+
+    public void devolverEmprestimo(Usuario u, LivroFisico livro){
+        u.devolverLivro(livro);
+        livro.devolverlivro();
+    }
+
+
+    
     
     public Usuario buscarUsuario(int idBusca) {
         for (Usuario usuario : usuarios) {
