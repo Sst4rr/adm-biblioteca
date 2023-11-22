@@ -43,7 +43,7 @@ public abstract class Usuario{
      * @param livro O livro físico a ser emprestado
      * @throws Exception Exceção lançada caso o usuário já tenha o livro emprestado ou já tenha atingido o limite de livros permitidos.
      */
-  public void pegarLivro(LivroFisico livro) throws Exception {
+    public void pegarLivro(LivroFisico livro) throws Exception {
         if (livrosEmprestados.contains(livro)) {
             throw new Exception("Livro já emprestado para você!");
         } else if (livrosEmprestados.size() >= getMaxLivrosPermitidos()) {
