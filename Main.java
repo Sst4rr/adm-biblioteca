@@ -25,6 +25,14 @@ public class Main {
         biblioteca.cadastrarUsuario(prof02);
         //criação cadastro Livros
 
+        Livro livro01 = new Livro("o pequeno principe", "1932", "Antoine de Saint-Exupéry");
+        Livro livro02 = new Livro("harry potter e a pedra filosofal", "1997", "J. K. Rowling");
+
+        //buscar livro
+        System.out.println(biblioteca.buscarLivro("o pequeno principe"));
+
+        //buscar usuario
+        System.out.println(biblioteca.buscarUsuario(01));
 
 
 
