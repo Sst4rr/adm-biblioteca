@@ -32,9 +32,8 @@ public class Main {
         System.out.println(biblioteca.buscarLivro("o pequeno principe"));
 
         //buscar usuario
-        System.out.println(biblioteca.buscarUsuario(01));
-
-
+        biblioteca.buscarUsuario(01);
+        //tem que sobrescrever isso aqui pq n printa direto
 
     }
 }

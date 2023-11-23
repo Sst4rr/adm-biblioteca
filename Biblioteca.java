@@ -16,6 +16,7 @@ public class Biblioteca {
 
     public List<Livro> buscarLivro(String titulo) {
         List<Livro> livrosEncontrados = new ArrayList<>();
+        String tituloLowerCase = titulo.toLowerCase();
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                 livrosEncontrados.add(livro);
@@ -52,15 +53,21 @@ public class Biblioteca {
 
 
     
-    
+
     public Usuario buscarUsuario(int idBusca) {
         for (Usuario usuario : usuarios) {
-            if (usuario instanceof UsuarioProfessor && ((UsuarioProfessor) usuario).getcodigo() == idBusca) {
-                return usuario;
-            } else if (usuario instanceof UsuarioAluno && ((UsuarioAluno) usuario).getMatricula() == idBusca) {
-                return usuario;
+            if (usuario instanceof UsuarioAluno) {
+                UsuarioAluno aluno = (UsuarioAluno) usuario;
+                if (aluno.getMatricula() == idBusca) {
+                    return aluno;
+                }
+            } else if (usuario instanceof UsuarioProfessor) {
+                UsuarioProfessor professor = (UsuarioProfessor) usuario;
+                if (professor.getcodigo() == idBusca) {
+                    return professor;
+                }
             }
         }
-        return null; // Retorna null se não encontrar o usuário com o ID
+        return null; // Retorna null se o usuário não for encontrado
     }
 }
