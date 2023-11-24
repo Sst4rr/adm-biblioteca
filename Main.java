@@ -28,6 +28,10 @@ public class Main {
         Livro livro01 = new Livro("o pequeno principe", "1932", "Antoine de Saint-Exupéry");
         Livro livro02 = new Livro("harry potter e a pedra filosofal", "1997", "J. K. Rowling");
 
+        //Adicionar livros a biblioteca
+        biblioteca.adicionarLivro(livro01);
+        biblioteca.adicionarLivro(livro02);
+
         //buscar livro
         System.out.println(biblioteca.buscarLivro("o pequeno principe"));
 

@@ -10,6 +10,10 @@ public class Biblioteca {
         this.usuarios = new ArrayList<>();
     }
 
+    public void adicionarLivro(Livro livro) {
+        livros.add(livro);
+    }
+
     public void cadastrarUsuario(Usuario u) {
         usuarios.add(u);
     }
@@ -45,14 +49,10 @@ public class Biblioteca {
         u.pegarLivro(livro);
     }
 
-
-    public void devolverEmprestimo(Usuario u, LivroFisico livro){
+    public void devolverEmprestimo(Usuario u, LivroFisico livro) {
         u.devolverLivro(livro);
         livro.devolverlivro();
     }
-
-
-    
 
     public Usuario buscarUsuario(int idBusca) {
         for (Usuario usuario : usuarios) {
