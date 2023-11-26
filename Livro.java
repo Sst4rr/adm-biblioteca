@@ -23,6 +23,10 @@ class Livro {
         this.autor = autor;
     }
 
+    @Override
+    public String toString(){
+        return "Livro:" + this.titulo + ", Autor:" + this.autor + ", Ano de Publicação:" + this.anoPublicacao;
+    }
     
     public String getTitulo(){
         return this.titulo;

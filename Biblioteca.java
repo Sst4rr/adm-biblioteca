@@ -3,15 +3,21 @@ import java.util.ArrayList;
 
 public class Biblioteca {
     private List<Livro> livros;
+    private List<LivroFisico> livrofisico;
     private List<Usuario> usuarios;
 
     public Biblioteca() {
         this.livros = new ArrayList<>();
+        this.livrofisico = new ArrayList<>();
         this.usuarios = new ArrayList<>();
     }
 
     public void adicionarLivro(Livro livro) {
         livros.add(livro);
+    }
+
+    public void adicionarLivroFisico(LivroFisico livroF){
+        livrofisico.add(livroF);
     }
 
     public void cadastrarUsuario(Usuario u) {
@@ -33,7 +39,7 @@ public class Biblioteca {
         if (!usuarios.contains(u)) {
             throw new Exception("Usuário não cadastrado na biblioteca.");
         }
-        if (!livros.contains(livro)) {
+        if (!livrofisico.contains(livro)) {
             throw new Exception("Livro não disponível na biblioteca.");
         }
         if (u instanceof UsuarioAluno && u.getLivrosEmprestados().size() >= 5) {
@@ -42,7 +48,7 @@ public class Biblioteca {
         if (u.getLivrosEmprestados().contains(livro)) {
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
-        if (livro.emprestarlivro()) {
+        if (!livro.emprestarlivro()) {
             throw new Exception("Este livro já está emprestado.");
         }
 

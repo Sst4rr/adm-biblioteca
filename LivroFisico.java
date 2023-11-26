@@ -45,7 +45,6 @@ class LivroFisico extends Livro {
             this.status = "Emprestado";
             return true;    
         } else {
-            System.out.println("Não há mais exemplares disponíveis. Tente de novo futuramente!");
             return false;
         }
     }
