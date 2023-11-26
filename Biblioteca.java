@@ -35,12 +35,9 @@ public class Biblioteca {
         return livrosEncontrados;
     }
 
-    public void realizarEmprestimo(Usuario u, LivroFisico livro) throws Exception {
+    public String realizarEmprestimo(Usuario u, LivroFisico livro) throws Exception {
         if (!usuarios.contains(u)) {
             throw new Exception("Usuário não cadastrado na biblioteca.");
-        }
-        if (!livrofisico.contains(livro)) {
-            throw new Exception("Livro não disponível na biblioteca.");
         }
         if (u instanceof UsuarioAluno && u.getLivrosEmprestados().size() >= 5) {
             throw new Exception("Limite de empréstimos atingido para alunos.");
@@ -48,11 +45,16 @@ public class Biblioteca {
         if (u.getLivrosEmprestados().contains(livro)) {
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
-        if (!livro.emprestarlivro()) {
-            throw new Exception("Este livro já está emprestado.");
+        if (!livrofisico.contains(livro)) {
+            throw new Exception("Livro não disponível na biblioteca.");
         }
-
-        u.pegarLivro(livro);
+        try {
+            String resultadoEmprestimo = livro.realizarEmprestimo();
+            u.pegarLivro(livro);
+            return resultadoEmprestimo;
+        } catch (Exception e) {
+            return "Erro ao realizar o empréstimo: " + e.getMessage();
+        }
     }
 
     public void devolverEmprestimo(Usuario u, LivroFisico livro) {

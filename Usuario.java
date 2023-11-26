@@ -49,8 +49,12 @@ public abstract class Usuario{
         } else if (livrosEmprestados.size() >= getMaxLivrosPermitidos()) {
             throw new Exception("Você já possui o número máximo de livros permitidos.");
         } else {
-            livrosEmprestados.add(livro);
-            livro.emprestarlivro(); // Chamada direta ao método emprestarlivro() de LivroFisico
+            String resultadoEmprestimo = livro.realizarEmprestimo();
+            if (resultadoEmprestimo.equals("Livro emprestado.") || resultadoEmprestimo.startsWith("Ultima cópia emprestada. Não há mais exemplares, tente novamente após 7 dias.")){
+                livrosEmprestados.add(livro);
+            } else{
+                throw new Exception(resultadoEmprestimo);
+            }
         }
     }
         

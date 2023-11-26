@@ -26,6 +26,10 @@ class LivroFisico extends Livro {
         return this.status;
     }
 
+    public void setStatus(String status){
+        this.status = status;
+    }
+
     public int getCopiasDisponiveis() {
         return this.copiasDisponiveis;
     }
@@ -35,18 +39,24 @@ class LivroFisico extends Livro {
     }
 
     /**
-     * Método para emprestar um livro.
-     * 
-     * @param usuario O usuário que está emprestando o livro
+     * Função para reaização de empréstimos de livro físico;
+     * Verificar se há cópias diponíveis e decrementa se houver;
+     * Caso não haja cópias retorna um erro .    
+     * * @return String com o resultado.
      */
-    public boolean emprestarlivro() {
-        if (this.copiasDisponiveis > 0) {
-            this.copiasDisponiveis--;
-            this.status = "Emprestado";
-            return true;    
-        } else {
-            return false;
+    public String realizarEmprestimo(){
+        if(this.getCopiasDisponiveis()>1){
+            this.setCopiasDisponiveis(this.getCopiasDisponiveis()-1);
+            this.setStatus("Emprestado");
+            return "Livro emprestado.";
+        } else if(this.getCopiasDisponiveis() == 1){
+            this.setStatus("Emprestado");
+            this.setCopiasDisponiveis(0);
+            return "Ultima cópia emprestada. Não há mais exemplares, tente novamente após 7 dias.";
+        } else{
+            return "Não há mais exemplares disponíveis.";
         }
+
     }
 
     /**

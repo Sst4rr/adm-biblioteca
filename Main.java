@@ -51,7 +51,11 @@ public class Main {
         biblioteca.adicionarLivroFisico(livroF01);
 
         //Realizar emprestimo
-        biblioteca.realizarEmprestimo(aluno01, livroF01);
+        String resultadoEmprestimo = biblioteca.realizarEmprestimo(aluno01, livroF01);
+        System.out.println(resultadoEmprestimo);
+
+        String resultadoEmprestimo02 = biblioteca.realizarEmprestimo(aluno05, livroF01);
+        System.out.println(resultadoEmprestimo02);
 
         //buscar livro
         System.out.println(biblioteca.buscarLivro("o pequeno principe"));
