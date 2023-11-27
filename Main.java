@@ -45,7 +45,7 @@ public class Main {
         biblioteca.adicionarLivro(livro05);
 
         //Adicionar livros físicos
-        LivroFisico livroF01 = new LivroFisico("o pequeno principe", "1932", "Antoine de Saint-Exupéry", 5);
+        LivroFisico livroF01 = new LivroFisico("o pequeno principe", "1932", "Antoine de Saint-Exupéry", 3);
 
         //Adicionar livros fisicos a biblioteca
         biblioteca.adicionarLivroFisico(livroF01);
@@ -56,6 +56,9 @@ public class Main {
 
         String resultadoEmprestimo02 = biblioteca.realizarEmprestimo(aluno05, livroF01);
         System.out.println(resultadoEmprestimo02);
+
+         String resultadoEmprestimo03 = biblioteca.realizarEmprestimo(aluno02, livroF01);
+        System.out.println(resultadoEmprestimo03);
 
         //buscar livro
         System.out.println(biblioteca.buscarLivro("o pequeno principe"));
