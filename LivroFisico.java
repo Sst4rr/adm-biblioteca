@@ -1,22 +1,12 @@
 
-/**
- * Classe LivroFisico que representa um livro físico.
- */
 class LivroFisico extends Livro {
 
     private int copiasDisponiveis;
     private String status;
 
-    /**
-     * Construtor da classe LivroFisico.
-     * 
-     * @param titulo            Titulo do livro
-     * @param anoPublicacao     Ano de publicação do livro
-     * @param autor             Autor do livro
-     * @param copiasDisponiveis Quantidade de cópias disponíveis do livro
-     */
-    public LivroFisico(String titulo, String anoPublicacao, String autor, int copiasDisponiveis) {
-        super(titulo, anoPublicacao, autor);
+
+    public LivroFisico(Livro livro, int copiasDisponiveis) {
+        super(livro.getTitulo(), livro.getAnoPublicacao(), livro.getAutor());
         this.copiasDisponiveis = copiasDisponiveis;
         this.status = "Disponível";
     }
@@ -38,33 +28,23 @@ class LivroFisico extends Livro {
         this.copiasDisponiveis = copiasDisponiveis;
     }
 
-    /**
-     * Função para reaização de empréstimos de livro físico;
-     * Verificar se há cópias diponíveis e decrementa se houver;
-     * Caso não haja cópias retorna um erro .    
-     * * @return String com o resultado.
-     */
-    public String realizarEmprestimo(){
+
+    public void emprestar() throws Exception {
         if(this.getCopiasDisponiveis()>1){
             this.setCopiasDisponiveis(this.getCopiasDisponiveis()-1);
             this.setStatus("Emprestado");
-            return "Livro emprestado.";
         } else if(this.getCopiasDisponiveis() == 1){
             this.setStatus("Emprestado");
-            this.setCopiasDisponiveis(0);
-            return "Ultima cópia emprestada. Não há mais exemplares, tente novamente após 7 dias.";
+            this.setCopiasDisponiveis(this.getCopiasDisponiveis()-1);
+            System.out.println("Este é o último exemplar disponível.");
         } else{
-            return "Não há mais exemplares disponíveis.";
+            throw new Exception("Não há mais exemplares disponíveis.");
         }
 
     }
 
-    /**
-     * Método para devolver um livro.
-     * 
-     * @param usuario O usuário que está devolvendo o livro.
-     */
-    public void devolverlivro() {
+
+    public void devolver(){
         this.copiasDisponiveis++;
         this.status = "Disponível";
     }

@@ -45,33 +45,28 @@ public class Main {
         biblioteca.adicionarLivro(livro05);
 
         //Adicionar livros físicos
-        LivroFisico livroF01 = new LivroFisico("o pequeno principe", "1932", "Antoine de Saint-Exupéry", 3);
-
-        //blabla
-        //Adicionar livros fisicos a biblioteca
-        biblioteca.adicionarLivroFisico(livroF01);
+        LivroFisico livroF01 = new LivroFisico(livro01,2);
 
         //Realizar emprestimo
-        String resultadoEmprestimo = biblioteca.realizarEmprestimo(aluno01, livroF01);
-        System.out.println(resultadoEmprestimo);
-
-        String resultadoEmprestimo02 = biblioteca.realizarEmprestimo(aluno05, livroF01);
-        System.out.println(resultadoEmprestimo02);
-
-         String resultadoEmprestimo03 = biblioteca.realizarEmprestimo(aluno02, livroF01);
-        System.out.println(resultadoEmprestimo03);
+        biblioteca.realizarEmprestimo(aluno01, livroF01);
+    
+        biblioteca.realizarEmprestimo(aluno05, livroF01);
+        
+        biblioteca.realizarEmprestimo(aluno02, livroF01);
+        
 
         //buscar livro
         System.out.println(biblioteca.buscarLivro("o pequeno principe"));
 
-        //buscar usuario
-        Usuario encontrado = biblioteca.buscarUsuario(01);
-        if(encontrado != null){
-            System.out.println("Usuário: " + encontrado.getNome());
-        }else{
-             System.out.println("Usuário não encontrado.");
-        }
+        // //buscar usuario
+        biblioteca.buscarUsuario(01);
+
+        // devolver emprestimo
+        biblioteca.devolverEmprestimo(aluno01, livroF01);
+        biblioteca.devolverEmprestimo(aluno01, livroF01);
         
+
+        // System.out.print("====================================\n O que você deseja fazer?\n1- Adicionar livro\n");
 
 
 

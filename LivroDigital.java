@@ -7,15 +7,7 @@ public class LivroDigital extends Livro {
     private double tamanho;
     private String URL;
 
-    /**
-     * Construtor da classe LivroDigital.
-     * @param titulo
-     * @param anoPublicacao
-     * @param autor
-     * @param formato
-     * @param tamanho
-     * @param URL
-     */
+   
     public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, double tamanho, String URL) {
         super(titulo, anoPublicacao, autor);
         this.formato = formato;
@@ -27,30 +19,27 @@ public class LivroDigital extends Livro {
         return formato;
     }
 
-    public void setFormato(String formato) {
-        this.formato = formato;
-    }
-
-    public double getTamanho() {
+     public double getTamanho() {
         return tamanho;
-    }
-
-    public void setTamanho(double tamanho) {
-        this.tamanho = tamanho;
     }
 
     public String getURL() {
         return URL;
     }
 
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
+    public void setTamanho(double tamanho) {
+        this.tamanho = tamanho;
+    }
+
     public void setURL(String URL) {
         this.URL = URL;
     }
 
-    /**
-     * Método para baixar um livro.
-     * @return Mensagem de dowload do livro
-     */
+
     public String baixarLivro() {
         return "Livro '" + this.getTitulo() + "' baixado com sucesso do seguinte URL: " + this.URL;
     }

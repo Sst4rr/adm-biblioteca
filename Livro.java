@@ -1,28 +1,17 @@
     
-/**
- * Classe mãe Livro
- * 
- * Classe que representa um livro
- * 
- * @version 1.0
- */
+
 class Livro {
     private String titulo;
     private String anoPublicacao;
     private String autor;
 
-    /**
-     * Construtor da classe Livro.
-     * @param titulo 
-     * @param anoPublicacao
-     * @param autor
-     */
     public Livro(String titulo, String anoPublicacao, String autor) {
         this.titulo = titulo;
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
     }
 
+    // Construtor de cópia
     @Override
     public String toString(){
         return "Livro:" + this.titulo + ", Autor:" + this.autor + ", Ano de Publicação:" + this.anoPublicacao;
