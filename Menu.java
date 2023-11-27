@@ -12,6 +12,7 @@ public class Menu{
         if(a == 1){
             System.out.print("1. Adicionar livro\n2. Remover livro\n3. Realizar empréstimo\n4. Devolver livro\n5. Listar livros\n6. Listar livros emprestados\n7Listar livros disponíveis\n8. Sair\n\n");
             int b = input.nextInt();
+            //adicionar livro
             if(b == 1){
                 System.out.println("Digite o nome do livro");
                 String nome = input.nextLine();
@@ -25,7 +26,23 @@ public class Menu{
                 Livro livro01 = new Livro(nome, ano, autor);
                 biblioteca.adicionarLivro(livro01);
                 LivroFisico livroF01 = new LivroFisico(livro01, exemplaresDisponiveis);
-            } else if()
+            }
+            //remover livro
+            else if(b == 2){
+                System.out.println("Digite o nome do livro");
+                String nome = input.nextLine();
+                biblioteca.removerLivro(nome);
+            }
+            //realizar emprestimo
+            else if(b == 3){
+                System.out.println("Digite o nome do livro");
+                String nome = input.nextLine();
+                System.out.println("Digite o codigo do usuario");
+                int codigo = input.nextInt();
+                Usuario user = biblioteca.buscarUsuario(codigo);
+                Livro livro = biblioteca.buscarLivro(nome);
+                biblioteca.realizarEmprestimo(user, livro);
+            }
 
             
         }else if(a == 2){

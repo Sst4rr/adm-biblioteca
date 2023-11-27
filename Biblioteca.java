@@ -15,9 +15,20 @@ public class Biblioteca {
         System.out.println("Livro "+ livro+ " adicionado com sucesso!");
     }
 
-    public void removerLivro(Livro livro) {
-        livros.remove(livro);
-        System.out.println("Livro " + livro + " removido com sucesso!");
+    public void removerLivro(String titulo) {
+        Livro livroARemover = null;
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                livroARemover = livro;
+                break;
+            }
+        }
+        if(livroARemover != null){
+            livros.remove(livroARemover);
+            System.out.print("Livro "+livroARemover.getTitulo()+" removido com sucesso!" );
+        }else{
+            System.out.println("Livro '" +titulo+ "' não encontrado.")
+        }
     }
 
 
