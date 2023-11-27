@@ -46,13 +46,15 @@ public class Main {
 
         //Adicionar livros físicos
         LivroFisico livroF01 = new LivroFisico(livro01,2);
-
+        LivroFisico livroF02 = new LivroFisico(livro02,10);
         //Realizar emprestimo
         biblioteca.realizarEmprestimo(aluno01, livroF01);
     
         biblioteca.realizarEmprestimo(aluno05, livroF01);
         
         biblioteca.realizarEmprestimo(aluno02, livroF01);
+
+        biblioteca.realizarEmprestimo(aluno03, livroF02);
         
 
         //buscar livro
@@ -66,10 +68,7 @@ public class Main {
         biblioteca.devolverEmprestimo(aluno01, livroF01);
         
 
-        // System.out.print("====================================\n O que você deseja fazer?\n1- Adicionar livro\n");
-
-
-
+        // biblioteca.listarLivrosDisponiveis();
         
 
     }

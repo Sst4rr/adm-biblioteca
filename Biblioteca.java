@@ -61,8 +61,14 @@ public class Biblioteca {
     }
 
     public void devolverEmprestimo(Usuario u, LivroFisico livro) {
-        u.devolverLivro(livro);
-        livro.devolver();
+        if(u.getLivrosEmprestados().contains(livro)){
+            u.devolverLivro(livro);
+            livro.devolver();
+            System.out.println("Livro devolvido com sucesso por: " + u.getNome());
+        } else{
+            System.out.println(u.getNome() + " Não devolver este livro, pois você não o adquiriu.");
+        }
+         
     }
 
     public Usuario buscarUsuario(int idBusca) throws Exception{
@@ -105,13 +111,17 @@ public class Biblioteca {
         }
     }
 
-    public void listarLivrosDisponiveisParaEmprestimo() {
-        for (LivroFisico livro : livro) {
-            if (livro.getStatus().equals("Disponivel")) {
-                System.out.println(livro);
-            }
-        }
-    }
+    //listar livros disponiveis para emprestimo
+    // public void listarLivrosDisponiveis() {
+    //     for (Livro livro : livros) {
+    //         if (livro instanceof LivroFisico) {
+    //             LivroFisico livroFisico = (LivroFisico) livro;
+    //             if (livroFisico.isDisponivel()) {
+    //                 System.out.println(livroFisico.getTitulo() + " está disponível para empréstimo.");
+    //             }
+    //         }
+    //     }
+    // }
 
 }
 

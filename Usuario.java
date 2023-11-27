@@ -62,6 +62,14 @@ public abstract class Usuario{
         return "Livro '" + livro.getTitulo() + "' baixado com sucesso.";
     }
 
+    public String livrosEmprestadosToString() {
+        String livros = "";
+        for (LivroFisico livro : livrosEmprestados) {
+            livros += livro.getTitulo() + ", ";
+        }
+        return livros;
+    }
+    
     protected abstract int getMaxLivrosPermitidos();
 
 }
