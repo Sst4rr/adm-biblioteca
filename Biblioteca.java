@@ -1,3 +1,6 @@
+//atualizar livros em posse
+
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,8 +30,8 @@ public class Biblioteca {
             livros.remove(livroARemover);
             System.out.print("Livro "+livroARemover.getTitulo()+" removido com sucesso!" );
         }else{
-            System.out.println("Livro '" +titulo+ "' não encontrado.")
-        }
+            System.out.println("Livro '" +titulo+ "' não encontrado.");
+        }// tratamento de erro
     }
 
 
@@ -40,6 +43,8 @@ public class Biblioteca {
         usuarios.remove(u);
     }
 
+    //add contains com o toLowerCase
+    //emprestar pelo id
     public List<Livro> buscarLivro(String titulo) {
         List<Livro> livrosEncontrados = new ArrayList<>();
         String tituloLowerCase = titulo.toLowerCase();
@@ -59,7 +64,8 @@ public class Biblioteca {
         if (u instanceof UsuarioAluno && u.getLivrosEmprestados().size() >= 5) {
             throw new Exception("Limite de empréstimos atingido para alunos.");
         }
-        if (u.getLivrosEmprestados().contains(livro)) {
+        if (u.getLivrosEmprestados().contains(livro)){
+            //verificar em livros em posse do usuário e não os emprestados
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
         try {
@@ -82,6 +88,8 @@ public class Biblioteca {
          
     }
 
+
+    //add contains
     public Usuario buscarUsuario(int idBusca) throws Exception{
         try {
             for (Usuario usuario : usuarios) {

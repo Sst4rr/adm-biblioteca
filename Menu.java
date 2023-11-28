@@ -40,7 +40,7 @@ public class Menu{
                 System.out.println("Digite o codigo do usuario");
                 int codigo = input.nextInt();
                 Usuario user = biblioteca.buscarUsuario(codigo);
-                Livro livro = biblioteca.buscarLivro(nome);
+                Livro livroEncontrado = biblioteca.buscarLivro(nome);
                 biblioteca.realizarEmprestimo(user, livro);
             }
 
