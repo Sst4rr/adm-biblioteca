@@ -146,7 +146,7 @@ public class Biblioteca {
 }
 
 
-    //buscar livros emprestados por usuario
+    //buscar livros emprestados por usuario6
     //buscar livros disponiveis
     //buscar livros emprestados
 
