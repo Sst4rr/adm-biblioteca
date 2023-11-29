@@ -40,8 +40,8 @@ public class Menu{
                 System.out.println("Digite o codigo do usuario que vai receber o livro: ");
                 int codigo = input.nextInt();
                 Usuario user = biblioteca.buscarUsuario(codigo);
-                Livro livroEncontrado = biblioteca.buscarLivro(nome);
-                biblioteca.realizarEmprestimo(user, livro);
+                LivroFisico livroEncontrado = biblioteca.buscarLivro(nome);
+                biblioteca.realizarEmprestimo(user, livroEncontrado);
             } else if(b == 4){
                 
             }
