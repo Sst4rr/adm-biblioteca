@@ -47,9 +47,10 @@ public class Biblioteca {
     //emprestar pelo id
     public List<Livro> buscarLivro(String titulo) {
         List<Livro> livrosEncontrados = new ArrayList<>();
-        String tituloLowerCase = titulo.toLowerCase();
+        String parteTituloLowerCase = titulo.toLowerCase();
         for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+            String tituloLowerCase = livro.getTitulo().toLowerCase();
+            if (tituloLowerCase.contains(parteTituloLowerCase)) {
                 livrosEncontrados.add(livro);
             }
         }

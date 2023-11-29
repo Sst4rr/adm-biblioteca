@@ -29,19 +29,21 @@ public class Menu{
             }
             //remover livro
             else if(b == 2){
-                System.out.println("Digite o nome do livro");
+                System.out.println("Digite o nome do livro que você deseja remover? ");
                 String nome = input.nextLine();
                 biblioteca.removerLivro(nome);
             }
             //realizar emprestimo
             else if(b == 3){
-                System.out.println("Digite o nome do livro");
+                System.out.println("Digite o nome do livro que você deseja emprestar: ");
                 String nome = input.nextLine();
-                System.out.println("Digite o codigo do usuario");
+                System.out.println("Digite o codigo do usuario que vai receber o livro: ");
                 int codigo = input.nextInt();
                 Usuario user = biblioteca.buscarUsuario(codigo);
                 Livro livroEncontrado = biblioteca.buscarLivro(nome);
                 biblioteca.realizarEmprestimo(user, livro);
+            } else if(b == 4){
+                
             }
 
             
