@@ -54,8 +54,19 @@ public class Biblioteca {
                 livrosEncontrados.add(livro);
             }
         }
+
+        if (!livrosEncontrados.isEmpty()) {
+            System.out.println("Livros encontrados com o título '" + titulo + "':");
+            for (Livro livroEncontrado : livrosEncontrados) {
+                System.out.println("- " + livroEncontrado.getTitulo());
+            }
+        } else {
+            System.out.println("Nenhum livro encontrado com o título '" + titulo + "'.");
+        }
         return livrosEncontrados;
     }
+
+
 
     public void realizarEmprestimo(Usuario u, LivroFisico livro) throws Exception {
         
