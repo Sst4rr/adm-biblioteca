@@ -43,6 +43,25 @@ public class Menu{
                 System.out.println("Digite o nome do livro que você deseja buscar: ");
                 String nome = input.nextLine();
                 List<LivroFisico> livrosEncontrados = biblioteca.buscarLivro(nome);
+
+                System.out.println("Informe o livro que deseja com base no seu código: ");
+                String codigoLivroEscolhido = input.nextLine();
+                LivroFisico emprestimo = null;
+                for(LivroFisico livro: livrosEncontrados){
+                    if(livro.getCodigo().equals(codigoLivroEscolhido)){
+                        emprestimo = livro;
+                        break;
+                    }
+                }
+
+                String nomeUser = input.nextLine();
+
+                if(emprestimo != null){
+
+                    try{
+                        biblioteca.realizarEmprestimo(, emprestimo);
+                    }
+                }
                 //System.out.println("Digite o codigo do usuario que vai receber o livro: ");
                 //int codigo = input.nextInt();
                 //Usuario user = biblioteca.buscarUsuario(codigo);
@@ -58,7 +77,7 @@ public class Menu{
             int c = input.nextInt();
             if(c==1){
                 System.out.println("Digite o nome so usuáro:");
-                String nomeUser = input.nextLine();
+               // String nomeUser = input.nextLine();
                 Usuario user = new Usuario(nomeUser);
 
             }
