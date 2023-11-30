@@ -169,7 +169,7 @@ public class Biblioteca {
     public Usuario descobrirUsuario (int cod){
         List<Usuario> usuariosDescobertos =  new ArrayList<>();
         System.out.println("Digite 1 se o usuário for professor e 2 se for aluno: ");
-        int us = input.nextInt();
+        int us = input.nextInt();   
     }
 
     //listar livros disponiveis para emprestimo
