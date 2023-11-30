@@ -150,12 +150,6 @@ public class Biblioteca {
 
     //Buscar usuario por nome
 
-    public void listarLivros() {
-        for (Livro livro : livros) {
-            System.out.println(livro);
-        }
-    }
-
     public void listarUsuarios() {
         for (Usuario usuario : usuarios) {
             System.out.println(usuario);
@@ -208,17 +202,16 @@ public class Biblioteca {
         return livroEncontrado;
     }
 
-    //listar livros disponiveis para emprestimo
-    // public void listarLivrosDisponiveis() {
-    //     for (Livro livro : livros) {
-    //         if (livro instanceof LivroFisico) {
-    //             LivroFisico livroFisico = (LivroFisico) livro;
-    //             if (livroFisico.isDisponivel()) {
-    //                 System.out.println(livroFisico.getTitulo() + " está disponível para empréstimo.");
-    //             }
-    //         }
-    //     }
-    // }
+    public void ImprimirTodosOsLivros() {
+        if (livros.isEmpty()) {
+            System.out.println("Não há livros cadastrados.");
+        } else {
+            System.out.println("Lista de Livros:");
+            for (Livro livro : livros) {
+                System.out.println("Título: " + livro.getTitulo() + ", Autor: " + livro.getAutor() + ", Ano: " + livro.getAnoPublicacao() + ", Código: " + ((LivroFisico) livro).getCodigo());
+            }
+        }
+    }
 
     }
 

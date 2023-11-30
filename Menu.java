@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu{
@@ -14,14 +14,25 @@ public class Menu{
             a = input.nextInt();
             if(a==1){
 
-                System.out.print("1. Adicionar livro\n2. Remover livro\n3. Realizar empréstimo\n4. Devolver livro\n5. Listar livros\n6. Listar livros emprestados\n7Listar livros disponíveis\n8. Sair\n\n");
+                System.out.print("=====================================\n0. Buscar livro\n1. Adicionar livro\n2. Remover livro\n3. Realizar empréstimo\n4. Devolver livro\n5. Listar todos os livros \n6. Sair\n\n");
                 int b = input.nextInt();
 
                 switch (b) {
+
+                case 0:
+                    
+                    System.out.println("============================\nDigite o nome do livro que você quer buscar: ");
+                    String buscarLivro = input.nextLine();
+                    List<LivroFisico> livrosEncontrados01 = biblioteca.buscarLivro(buscarLivro);
+
+                    for(LivroFisico livroEncontrado : livrosEncontrados01){
+                        System.out.println("Código: " + livroEncontrado.getCodigo() + "Título: " + livroEncontrado.getTitulo());
+                    }
+                    break;
                 case 1:
                     
                 //adicionar livro
-                    System.out.println("Digite o nome do livro que você deseja adicionar: ");
+                    System.out.println("==================================\nDigite o nome do livro que você deseja adicionar: ");
                     String nome = input.next();
                     input.nextLine();
                     System.out.println("Digite o respectivo nome do autor: ");
@@ -35,10 +46,7 @@ public class Menu{
                     input.nextLine();
                     System.out.println("Digite o código do livro: ");
                     String codigo = input.next();
-                    
 
-
-                    
                     Livro livro01 = new Livro(nome, ano, autor, codigo);
                     biblioteca.adicionarLivro(livro01);
                     LivroFisico livroF01 = new LivroFisico(livro01, exemplaresDisponiveis);
@@ -46,15 +54,15 @@ public class Menu{
                     break;
             
                 case 2:
-                    System.out.println("Digite o nome do livro que você deseja remover? ");
+                    //remover livro
+                    System.out.println("==================================\nDigite o nome do livro que você deseja remover? ");
                     String nomeRemover = input.next();
                     biblioteca.removerLivro(nomeRemover);
                     break;
-                    //remover por codigo
 
                 case 3:
                     //emprestar livro: primeiro vai mostrar a lista de livros
-                    System.out.println("Digite o nome do livro que você deseja buscar: ");
+                    System.out.println("==================================\nDigite o nome do livro que você deseja buscar: ");
                     String nomeBuscar = input.next();
                     List<LivroFisico> livrosEncontrados = biblioteca.buscarLivro(nomeBuscar);
 
@@ -80,36 +88,29 @@ public class Menu{
                             e.printStackTrace();
                         }
                     }
-                    //System.out.println("Digite o codigo do usuario que vai receber o livro: ");
-                    //int codigo = input.nextInt();
-                    //Usuario user = biblioteca.buscarUsuario(codigo);
-                    //LivroFisico livroEncontrado = biblioteca.buscarLivro(nome);
-                    //biblioteca.realizarEmprestimo(user, livroEncontrado);
                     break;
+
                 case 4:
                     //devolver livro
-                    System.out.println("Digite o codigo do aluno ou professor que deseja devolver o livro: ");
+                    System.out.println("====================================\nDigite o codigo do aluno ou professor que deseja devolver o livro: ");
                     int codUser01 = input.nextInt();
                     Usuario usuarioDevolverLivro = biblioteca.descobrirUsuario(codUser01);
                     System.out.println("Digite o código do livro a ser devolvido: ");
                     String livroASerDevolvido = input.next();
+                    
                     LivroFisico livroDevolucao = biblioteca.buscarLivroPorId(livroASerDevolvido);
                     biblioteca.devolverEmprestimo(usuarioDevolverLivro, livroDevolucao);
                     break;
                 case 5:
+                    System.out.println("Os livros pertecententes a Biblioteca estão listados na lista a baixo: ");
+                    biblioteca.ImprimirTodosOsLivros();
+                    break;
+                
+                case 6: 
+                //sair dessa aba
+                break;
             }
-            
-            
-                // //remover livro
-                // else if(b == 2){
-                    
-                // }
-                // //realizar emprestimo
-                // else if(b == 3){
 
-                // } else if(b == 4){
-                    
-                // }
 
                 
             }else if(a == 2){
