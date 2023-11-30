@@ -3,10 +3,13 @@
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Biblioteca {
     private List<Livro> livros;
     private List<Usuario> usuarios;
+
+    Scanner input = new Scanner(System.in);
 
     public Biblioteca() {
         this.livros = new ArrayList<>();
@@ -39,10 +42,25 @@ public class Biblioteca {
         usuarios.add(u);
     }
 
-    public void removerUsuario(Usuario u) {
-        usuarios.remove(u);
+    public void removerUsuario(String u) {
+        Usuario usuarioRemove = null;
+        
+        for(Usuario usuario : usuarios){
+            if(usuario.getNome().equalsIgnoreCase(u)){
+                usuarioRemove = usuario;
+                break;
+            }
+        }
+
+        if(usuarioRemove != null){
+            usuarios.remove(usuarioRemove);
+            System.out.println("Usuário " + u + "removido com sucesso!");
+        } else{
+            System.out.println("O usuário " + u + "não foi encontrado.");
+        }
     }
 
+    
     //add contains com o toLowerCase
     //emprestar pelo id
     public List<LivroFisico> buscarLivro(String titulo) {
@@ -146,6 +164,12 @@ public class Biblioteca {
         for (Usuario usuario : usuarios) {
             System.out.println(usuario.getLivrosEmprestados());
         }
+    }
+
+    public Usuario descobrirUsuario (int cod){
+        List<Usuario> usuariosDescobertos =  new ArrayList<>();
+        System.out.println("Digite 1 se o usuário for professor e 2 se for aluno: ");
+        int us = input.nextInt();
     }
 
     //listar livros disponiveis para emprestimo
