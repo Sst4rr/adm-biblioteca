@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import org.w3c.dom.UserDataHandler;
-
 import java.util.List;
 
 public class Menu{
@@ -23,29 +21,33 @@ public class Menu{
                 case 1:
                     
                 //adicionar livro
-                    int count = count+1;
                     System.out.println("Digite o nome do livro que você deseja adicionar: ");
-                    String nome = input.nextLine();
+                    String nome = input.next();
+                    input.nextLine();
                     System.out.println("Digite o respectivo nome do autor: ");
-                    String autor = input.nextLine();
+                    String autor = input.next();
+                    input.nextLine();
                     System.out.println("Digite o ano de publicação: ");
-                    String ano = input.nextLine();
+                    String ano = input.next();
+                    input.nextLine();
                     System.out.println("Digite o número de exemplares disponíveis: ");
                     int exemplaresDisponiveis = input.nextInt();
+                    input.nextLine();
                     System.out.println("Digite o código do livro: ");
-                    String codigo = input.nextLine();
+                    String codigo = input.next();
+                    
 
 
                     
-                    Livro livro = new Livro(nome, ano, autor, codigo);
-                    biblioteca.adicionarLivro(livro);
-                    LivroFisico livroF01 = new LivroFisico(livro, exemplaresDisponiveis);
+                    Livro livro01 = new Livro(nome, ano, autor, codigo);
+                    biblioteca.adicionarLivro(livro01);
+                    LivroFisico livroF01 = new LivroFisico(livro01, exemplaresDisponiveis);
                     //vai dar erro por que vai repetir nome de variável
                     break;
             
                 case 2:
                     System.out.println("Digite o nome do livro que você deseja remover? ");
-                    String nomeRemover = input.nextLine();
+                    String nomeRemover = input.next();
                     biblioteca.removerLivro(nomeRemover);
                     break;
                     //remover por codigo
@@ -53,13 +55,13 @@ public class Menu{
                 case 3:
                     //emprestar livro: primeiro vai mostrar a lista de livros
                     System.out.println("Digite o nome do livro que você deseja buscar: ");
-                    String nomeBuscar = input.nextLine();
+                    String nomeBuscar = input.next();
                     List<LivroFisico> livrosEncontrados = biblioteca.buscarLivro(nomeBuscar);
 
 
                     //depois o usuário vai digitar o respectivo código do livro desejado
                     System.out.println("Informe o livro que deseja com base no seu código: ");
-                    String codigoLivroEscolhido = input.nextLine();
+                    String codigoLivroEscolhido = input.next();
                     LivroFisico emprestimo = null;
                     for(LivroFisico livro02: livrosEncontrados){
                         if(livro02.getCodigo().equals(codigoLivroEscolhido)){
@@ -68,11 +70,14 @@ public class Menu{
                         }
                     }
                     if(emprestimo != null){
-                        System.out.println("Informe o nome do usuário que vai receber o livro: ");
-                        
+                        System.out.println("Informe o código do usuário que vai receber o livro: ");
+                        int idAcharUsuario = input.nextInt();
+                        Usuario usuario = biblioteca.descobrirUsuario(idAcharUsuario);
 
                         try{
-                            biblioteca.realizarEmprestimo(nomeUser, emprestimo);
+                            biblioteca.realizarEmprestimo(usuario, emprestimo);
+                        } catch (Exception e){
+                            e.printStackTrace();
                         }
                     }
                     //System.out.println("Digite o codigo do usuario que vai receber o livro: ");
@@ -81,6 +86,17 @@ public class Menu{
                     //LivroFisico livroEncontrado = biblioteca.buscarLivro(nome);
                     //biblioteca.realizarEmprestimo(user, livroEncontrado);
                     break;
+                case 4:
+                    //devolver livro
+                    System.out.println("Digite o codigo do aluno ou professor que deseja devolver o livro: ");
+                    int codUser01 = input.nextInt();
+                    Usuario usuarioDevolverLivro = biblioteca.descobrirUsuario(codUser01);
+                    System.out.println("Digite o código do livro a ser devolvido: ");
+                    String livroASerDevolvido = input.next();
+                    LivroFisico livroDevolucao = biblioteca.buscarLivroPorId(livroASerDevolvido);
+                    biblioteca.devolverEmprestimo(usuarioDevolverLivro, livroDevolucao);
+                    break;
+                case 5:
             }
             
             
@@ -107,7 +123,7 @@ public class Menu{
                         
                         if(opcaoCadastro == 1){
                             System.out.println("Informe o nome do Aluno: ");
-                            String nomeUser = input.nextLine();
+                            String nomeUser = input.next();
                             System.out.println("Informe a matrícula do Aluno: ");
                             int matricula = input.nextInt();
 
@@ -115,7 +131,7 @@ public class Menu{
                             biblioteca.cadastrarUsuario(userAluno);
                         } else if(opcaoCadastro == 2){
                             System.out.println("Informe o nome do Professor: ");
-                            String nomeUser = input.nextLine();
+                            String nomeUser = input.next();
                             System.out.println("Informe o código do Professor: ");
                             int codigo = input.nextInt();
 
@@ -128,7 +144,7 @@ public class Menu{
 
                     case 2:
                         System.out.println("Informe o Usuário que deseja remover: ");
-                        String nomeUser = input.nextLine();
+                        String nomeUser = input.next();
 
                         biblioteca.removerUsuario(nomeUser);
                         

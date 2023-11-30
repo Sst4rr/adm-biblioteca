@@ -18,7 +18,7 @@ public class Biblioteca {
 
     public void adicionarLivro(Livro livro) {
         livros.add(livro);
-        System.out.println("Livro "+ livro+ " adicionado com sucesso!");
+        System.out.println("Livro "+ livro.getTitulo() + " adicionado com sucesso!");
     }
 
     public void removerLivro(String titulo) {
@@ -168,10 +168,44 @@ public class Biblioteca {
         }
     }
 
-    public Usuario descobrirUsuario (int cod){
-        List<Usuario> usuariosDescobertos =  new ArrayList<>();
-        System.out.println("Digite 1 se o usuário for professor e 2 se for aluno: ");
-        int us = input.nextInt();   
+    public Usuario descobrirUsuario (int codUser){
+        
+        Usuario usuario = null;
+        try{
+            for(Usuario user : usuarios){
+                if(user instanceof UsuarioProfessor){
+                    UsuarioProfessor professor = (UsuarioProfessor) user;
+                    if(professor.getcodigo() == codUser){
+                        usuario = professor;
+                        break;
+                    }
+        
+                } else if(user instanceof UsuarioAluno){
+                     UsuarioAluno aluno = (UsuarioAluno) user;
+                     if(aluno.getMatricula() == codUser){
+                        usuario = aluno;
+                        break;
+              }
+        }
+    }
+ } catch (Exception e){
+        e.printStackTrace();
+    }
+        return usuario;
+    }
+
+    public LivroFisico buscarLivroPorId(String id) {
+        LivroFisico livroEncontrado = null;
+        for (Livro livro : livros) {
+            if (livro instanceof LivroFisico) {
+                LivroFisico livroFisico = (LivroFisico) livro;
+                if (livroFisico.getCodigo().equals(id)) {
+                    livroEncontrado = livroFisico;
+                    break;
+                }
+            }
+        }
+        return livroEncontrado;
     }
 
     //listar livros disponiveis para emprestimo
@@ -186,7 +220,7 @@ public class Biblioteca {
     //     }
     // }
 
-}
+    }
 
 
     //buscar livros emprestados por usuario6
