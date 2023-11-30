@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import org.w3c.dom.UserDataHandler;
+
 import java.util.List;
 
 public class Menu{
@@ -54,12 +57,12 @@ public class Menu{
                     }
                 }
 
-                String nomeUser = input.nextLine();
+               
 
                 if(emprestimo != null){
 
                     try{
-                        biblioteca.realizarEmprestimo(, emprestimo);
+                        biblioteca.realizarEmprestimo(nomeUser, emprestimo);
                     }
                 }
                 //System.out.println("Digite o codigo do usuario que vai receber o livro: ");
@@ -75,11 +78,36 @@ public class Menu{
         }else if(a == 2){
             System.out.print("1. Adicionar usuário\n2. Remover usuário\n3. Buscar usuário\n5. Listar Usuario\n6. Sair\n");
             int c = input.nextInt();
-            if(c==1){
-                System.out.println("Digite o nome so usuáro:");
-               // String nomeUser = input.nextLine();
-                Usuario user = new Usuario(nomeUser);
+            
+            switch (c) {
+                case 1:
+                    System.out.println("\n1. Cadastrar Aluno;\n2. Cadastrar Professor.");
+                    int opcaoCadastro = input.nextInt();
+                    
+                    if(opcaoCadastro == 1){
+                        System.out.println("Informe o nome do Aluno: ");
+                        String nomeUser = input.nextLine();
+                        System.out.println("Informe a matrícula do Aluno: ");
+                        int matricula = input.nextInt();
 
+                        UsuarioAluno userAluno = new UsuarioAluno(nomeUser, matricula);
+                        biblioteca.cadastrarUsuario(userAluno);
+                    } else if(opcaoCadastro == 2){
+                        System.out.println("Informe o nome do Professor: ");
+                        String nomeUser = input.nextLine();
+                        System.out.println("Informe o código do Professor: ");
+                        int codigo = input.nextInt();
+
+                        UsuarioProfessor userProfessor = new UsuarioProfessor(nomeUser, codigo);
+                        biblioteca.cadastrarUsuario(userProfessor);
+                    }
+                    break;
+
+                case 2:
+                    
+            
+                default:
+                    break;
             }
         }
     }

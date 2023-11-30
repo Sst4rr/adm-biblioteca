@@ -104,22 +104,26 @@ public class Biblioteca {
 
 
     //add contains
-    public Usuario buscarUsuario(int idBusca) throws Exception{
+    public List<Usuario> buscarUsuario(int idBusca) throws Exception{
+        List<Usuario> usuariosEncontrados = new ArrayList<>();
         try {
             for (Usuario usuario : usuarios) {
                 if (usuario instanceof UsuarioAluno) {
                     UsuarioAluno aluno = (UsuarioAluno) usuario;
                     if (aluno.getMatricula() == idBusca) {
                     System.out.println("Usuário encontrado: " + aluno.getNome());
-                    return aluno;
+                    usuariosEncontrados.add(aluno);
                     }
                 }else if (usuario instanceof UsuarioProfessor) {
                     UsuarioProfessor professor = (UsuarioProfessor) usuario;
                     if (professor.getcodigo() == idBusca) {
                         System.out.println("Usuário encontrado: " + professor.getNome());
-                        return professor;
+                        usuariosEncontrados.add(professor);
                 }
             }
+        }
+        if(usuariosEncontrados.isEmpty()){
+            throw new Exception("Nenhum usuário encontrado com esse Id.");
         }
         } catch (Exception e){
             e.printStackTrace();
