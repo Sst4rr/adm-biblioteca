@@ -104,7 +104,10 @@ public class Menu{
                     break;
 
                 case 2:
-                    
+                    System.out.println("Informe o Usuário que deseja remover: ");
+                    String nomeUser = input.nextLine();
+
+                    biblioteca.removerUsuario(nomeUser);
             
                 default:
                     break;
