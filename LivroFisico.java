@@ -3,12 +3,14 @@ class LivroFisico extends Livro {
 
     private int copiasDisponiveis;
     private String status;
+    
     // private boolean disponivel;
 
     public LivroFisico(Livro livro, int copiasDisponiveis) {
-        super(livro.getTitulo(), livro.getAnoPublicacao(), livro.getAutor());
+        super(livro.getTitulo(), livro.getAnoPublicacao(), livro.getAutor(), livro.getCodigo());
         this.copiasDisponiveis = copiasDisponiveis;
         this.status = "Disponível";
+       
     }
 
     // public boolean isDisponivel() {
@@ -35,6 +37,8 @@ class LivroFisico extends Livro {
         this.copiasDisponiveis = copiasDisponiveis;
     }
 
+    
+
 
     public void emprestar() throws Exception {
         if(this.getCopiasDisponiveis()>1){
@@ -42,7 +46,7 @@ class LivroFisico extends Livro {
             this.setStatus("Emprestado");
         } else if(this.getCopiasDisponiveis() == 1){
             this.setStatus("Emprestado");
-            // System.out.println("Este é o último exemplar disponível.");
+            System.out.println("Este é o último exemplar disponível.");
             this.setCopiasDisponiveis(this.getCopiasDisponiveis()-1);
             // this.setDisponivel(false);
         } else{

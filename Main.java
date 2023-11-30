@@ -31,11 +31,11 @@ public class Main {
         biblioteca.cadastrarUsuario(prof05);
         //criação cadastro Livros
 
-        Livro livro01 = new Livro("o pequeno principe", "1932", "Antoine de Saint-Exupéry");
-        Livro livro02 = new Livro("harry potter e a pedra filosofal", "1997", "J. K. Rowling");
-        Livro livro03 = new Livro("A morte do José", "2003", "Mariollo");
-        Livro livro04 = new Livro("Casa da Árvore", "1890", "Mariellen Almeida");
-        Livro livro05 = new Livro("Monstro so Lago", "1909", "Albert Nirlen");
+        Livro livro01 = new Livro("o pequeno principe", "1932", "Antoine de Saint-Exupéry", "01");
+        Livro livro02 = new Livro("harry potter e a pedra filosofal", "1997", "J. K. Rowling", "02");
+        Livro livro03 = new Livro("A morte do José", "2003", "Mariollo","03");
+        Livro livro04 = new Livro("Casa da Árvore", "1890", "Mariellen Almeida","04");
+        Livro livro05 = new Livro("Monstro so Lago", "1909", "Albert Nirlen","05");
 
         //Adicionar livros a biblioteca
         biblioteca.adicionarLivro(livro01);

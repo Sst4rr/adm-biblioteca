@@ -8,8 +8,8 @@ public class LivroDigital extends Livro {
     private String URL;
 
    
-    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, double tamanho, String URL) {
-        super(titulo, anoPublicacao, autor);
+    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, double tamanho, String URL, String codigo) {
+        super(titulo, anoPublicacao, autor, codigo);
         this.formato = formato;
         this.tamanho = tamanho;
         this.URL = URL;

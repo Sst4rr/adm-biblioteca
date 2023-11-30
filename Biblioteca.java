@@ -45,20 +45,22 @@ public class Biblioteca {
 
     //add contains com o toLowerCase
     //emprestar pelo id
-    public List<Livro> buscarLivro(String titulo) {
-        List<Livro> livrosEncontrados = new ArrayList<>();
+    public List<LivroFisico> buscarLivro(String titulo) {
+        List<LivroFisico> livrosEncontrados = new ArrayList<>();
         String parteTituloLowerCase = titulo.toLowerCase();
         for (Livro livro : livros) {
-            String tituloLowerCase = livro.getTitulo().toLowerCase();
+            if(livro instanceof LivroFisico){
+                LivroFisico livroFisico = (LivroFisico) livro;
+            String tituloLowerCase = livroFisico.getTitulo().toLowerCase();
             if (tituloLowerCase.contains(parteTituloLowerCase)) {
-                livrosEncontrados.add(livro);
+                livrosEncontrados.add(livroFisico);
             }
         }
-
+    }
         if (!livrosEncontrados.isEmpty()) {
             System.out.println("Livros encontrados com o título '" + titulo + "':");
-            for (Livro livroEncontrado : livrosEncontrados) {
-                System.out.println("- " + livroEncontrado.getTitulo());
+            for (LivroFisico livroEncontrado : livrosEncontrados) {
+                System.out.println("- Código: " + livroEncontrado.getCodigo() + ", Título: " + livroEncontrado.getTitulo());
             }
         } else {
             System.out.println("Nenhum livro encontrado com o título '" + titulo + "'.");

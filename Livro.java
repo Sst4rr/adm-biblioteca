@@ -4,11 +4,13 @@ class Livro {
     private String titulo;
     private String anoPublicacao;
     private String autor;
+    private String codigo;
 
-    public Livro(String titulo, String anoPublicacao, String autor) {
+    public Livro(String titulo, String anoPublicacao, String autor, String codigo) {
         this.titulo = titulo;
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
+        this.codigo = codigo;
     }
 
     // Construtor de cópia
@@ -39,6 +41,14 @@ class Livro {
 
     public void setAnoPublicacao(String anoPublicacao){
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public String getCodigo(){
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo){
+        this.codigo = codigo;
     }
     
 }

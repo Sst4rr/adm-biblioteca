@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Menu{
 
@@ -21,9 +22,13 @@ public class Menu{
                 System.out.println("Digite o ano de publicação");
                 String ano = input.nextLine();
                 System.out.println("Digite o número de exemplares disponíveis");
-
                 int exemplaresDisponiveis = input.nextInt();
-                Livro livro01 = new Livro(nome, ano, autor);
+                System.out.println("Digite o código do livro");
+                String codigo = input.nextLine();
+
+
+                
+                Livro livro01 = new Livro(nome, ano, autor,codigo);
                 biblioteca.adicionarLivro(livro01);
                 LivroFisico livroF01 = new LivroFisico(livro01, exemplaresDisponiveis);
             }
@@ -35,13 +40,14 @@ public class Menu{
             }
             //realizar emprestimo
             else if(b == 3){
-                System.out.println("Digite o nome do livro que você deseja emprestar: ");
+                System.out.println("Digite o nome do livro que você deseja buscar: ");
                 String nome = input.nextLine();
-                System.out.println("Digite o codigo do usuario que vai receber o livro: ");
-                int codigo = input.nextInt();
-                Usuario user = biblioteca.buscarUsuario(codigo);
-                Livro livroEncontrado = biblioteca.buscarLivro(nome);
-                biblioteca.realizarEmprestimo(user, livro);
+                List<LivroFisico> livrosEncontrados = biblioteca.buscarLivro(nome);
+                //System.out.println("Digite o codigo do usuario que vai receber o livro: ");
+                //int codigo = input.nextInt();
+                //Usuario user = biblioteca.buscarUsuario(codigo);
+                //LivroFisico livroEncontrado = biblioteca.buscarLivro(nome);
+                //biblioteca.realizarEmprestimo(user, livroEncontrado);
             } else if(b == 4){
                 
             }
