@@ -68,8 +68,8 @@ public class Menu{
                         }
                     }
                     if(emprestimo != null){
-
-                        String nomeUser = input.nextLine();
+                        System.out.println("Informe o nome do usuário que vai receber o livro: ");
+                        
 
                         try{
                             biblioteca.realizarEmprestimo(nomeUser, emprestimo);

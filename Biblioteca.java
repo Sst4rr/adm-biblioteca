@@ -148,6 +148,8 @@ public class Biblioteca {
         } return null;
     }
 
+    //Buscar usuario por nome
+
     public void listarLivros() {
         for (Livro livro : livros) {
             System.out.println(livro);
