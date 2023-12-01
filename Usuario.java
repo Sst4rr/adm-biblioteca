@@ -36,7 +36,6 @@ public abstract class Usuario{
         return livrosEmPosse;
     }
 
-
     public void pegarLivro(LivroFisico livro) throws Exception {
         if (livrosEmPosse.contains(livro)) {
             throw new Exception("Livro já emprestado para você!");
@@ -47,16 +46,11 @@ public abstract class Usuario{
         }
     }
         
-
-
     public void devolverLivro(LivroFisico livro){
         livrosEmPosse.remove(livro);
         livrosEmprestados.add(livro);
         System.out.println("Livro '" + livro.getTitulo() + "' devolvido com sucesso.");
     }
-
-
-
 
     public String baixarLivro(LivroDigital livro) {
         livrosBaixados.add(livro);
@@ -72,11 +66,5 @@ public abstract class Usuario{
     }
     
     protected abstract int getMaxLivrosPermitidos();
-
-    //impressão livros em posse
-    
-
-    //impressao livros emprestados 
-
 
 }

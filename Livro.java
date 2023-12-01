@@ -1,5 +1,3 @@
-    
-
 class Livro {
     private String titulo;
     private String anoPublicacao;
@@ -13,7 +11,6 @@ class Livro {
         this.codigo = codigo;
     }
 
-    // Construtor de cópia
     @Override
     public String toString(){
         return "Livro:" + this.titulo + ", Autor:" + this.autor + ", Ano de Publicação:" + this.anoPublicacao;

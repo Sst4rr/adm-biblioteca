@@ -105,7 +105,6 @@ public class Menu {
 
                         // depois o usuário vai digitar o respectivo código do livro desejado
                         System.out.println("Informe o livro que deseja com base no seu código: ");
-                        input.nextLine();
                         String codigoLivroEscolhido = input.nextLine();
                         LivroFisico emprestimo = null;
                         for (LivroFisico livro02 : livroEncontrado) {
@@ -117,6 +116,7 @@ public class Menu {
                         if (emprestimo != null) {
                             System.out.println("Informe o código do usuário que vai receber o livro: ");
                             int idAcharUsuario = input.nextInt();
+                            input.nextLine();
                             Usuario usuario02 = biblioteca.descobrirUsuario(idAcharUsuario);
 
                             try {
@@ -145,14 +145,19 @@ public class Menu {
                         break;
 
                     case 6:
-                        System.out.println("Digite o código do livro que você deseja baixar: ");
-                        String codBaixar = input.next();
+                        int idAcharUsuario = input.nextInt();
                         input.nextLine();
-                        LivroDigital livroDigital = biblioteca.buscarLivroDigitalPorId(codBaixar);
+                        Usuario usuario = biblioteca.descobrirUsuario(idAcharUsuario);
+                        System.out.println("Digite o codigo do livro: ");
+                        String codLivro = input.next();
+                        LivroDigital livroDigital = biblioteca.buscarLivroDigitalPorId(codLivro);
+                        String mensagemDownload = biblioteca.baixarLivro(usuario, livroDigital);
+                        System.out.println(mensagemDownload);
+                        
+                    
                         break;
 
                     case 7:
-                        // sair dessa aba
                         break;
                 }
 

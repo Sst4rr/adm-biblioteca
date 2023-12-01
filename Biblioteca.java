@@ -1,6 +1,3 @@
-//atualizar livros em posse
-
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,11 +13,13 @@ public class Biblioteca {
         this.usuarios = new ArrayList<>();
     }
 
+    //adicionar livro
     public void adicionarLivro(Livro livro) {
         livros.add(livro);
         System.out.println("Livro adicionado: " + livro.getTitulo());
     }
 
+    //remover livro
     public void removerLivro(String titulo) {
         Livro livroARemover = null;
         for (Livro livro : livros) {
@@ -34,15 +33,16 @@ public class Biblioteca {
             System.out.print("Livro "+livroARemover.getTitulo()+" removido com sucesso!" );
         }else{
             System.out.println("Livro '" +titulo+ "' não encontrado.");
-        }// tratamento de erro
+        }
     }
 
-
+    //cadastrar usuario
     public void cadastrarUsuario(Usuario u) {
         usuarios.add(u);
         System.out.println("Usuário: " + u.getNome() + " cadastrado com sucesso!!");
     }
 
+    //remover usuario
     public void removerUsuario(String u) {
         Usuario usuarioRemove = null;
         
@@ -52,7 +52,6 @@ public class Biblioteca {
                 break;
             }
         }
-
         if(usuarioRemove != null){
             usuarios.remove(usuarioRemove);
             System.out.println("Usuário " + u + " removido com sucesso!");
@@ -61,8 +60,7 @@ public class Biblioteca {
         }
     }
 
-    
-    //add contains com o toLowerCase
+    //buscar livro fisico
     public List<LivroFisico> buscarLivroFisico(String titulo) {
         List<LivroFisico> livrosEncontrados = new ArrayList<>();
         String parteTituloLowerCase = titulo.toLowerCase();
@@ -76,19 +74,13 @@ public class Biblioteca {
                 }
             }
         }
-    
         if (livrosEncontrados.isEmpty()) {
             System.out.println("Nenhum livro foi encontrado com o título informado.");
         }
-    
         return livrosEncontrados;
     }
     
-    
-
-
-
-
+    //realizar empréstimo de livro fisico
     public void realizarEmprestimo(Usuario u, LivroFisico livro) throws Exception {
         
         if (!usuarios.contains(u)) {
@@ -98,7 +90,6 @@ public class Biblioteca {
             throw new Exception("Limite de empréstimos atingido para alunos.");
         }
         if (u.getLivrosEmPosse().contains(livro)){
-            //verificar em livros em posse do usuário e não os emprestados
             throw new Exception("Este livro já foi emprestado para o usuário.");
         }
         try {
@@ -110,6 +101,7 @@ public class Biblioteca {
         }
     }
 
+    //devolução de empréstimo
     public void devolverEmprestimo(Usuario u, LivroFisico livro) {
         if(u.getLivrosEmPosse().contains(livro)){
             u.devolverLivro(livro);
@@ -121,11 +113,9 @@ public class Biblioteca {
          
     }
 
-
-    //add contains
+    //buscar usuario por id
     public List<Usuario> buscarUsuario(int idBusca){
         List<Usuario> usuariosEncontrados = new ArrayList<>();
-
             for (Usuario usuario : usuarios) {
                 if (usuario instanceof UsuarioAluno) {
                     UsuarioAluno aluno = (UsuarioAluno) usuario;
@@ -148,30 +138,31 @@ public class Biblioteca {
         return usuariosEncontrados;
     }
 
-    //Buscar usuario por nome
-
+    //listar usuarios
     public void listarUsuarios() {
         if(usuarios.isEmpty()){
             System.out.println("Lista vazia");
         }else{
-        for (Usuario usuario : usuarios) {
-            if(usuario instanceof UsuarioProfessor){
-                UsuarioProfessor professor = (UsuarioProfessor) usuario;
-                System.out.println("Nome: " + professor.getNome() + " Código: " + professor.getcodigo());
-            }else if(usuario instanceof UsuarioAluno){
-                UsuarioAluno aluno = (UsuarioAluno) usuario;
-                System.out.println("Nome: " + aluno.getNome() + " Matrícula: " + aluno.getMatricula());
+            for (Usuario usuario : usuarios) {
+                if(usuario instanceof UsuarioProfessor){
+                    UsuarioProfessor professor = (UsuarioProfessor) usuario;
+                    System.out.println("Nome: " + professor.getNome() + " Código: " + professor.getcodigo());
+                }else if(usuario instanceof UsuarioAluno){
+                    UsuarioAluno aluno = (UsuarioAluno) usuario;
+                    System.out.println("Nome: " + aluno.getNome() + " Matrícula: " + aluno.getMatricula());
+                }
             }
         }
     }
-}
 
+    //listar livros emprestados para usuario
     public void listarLivrosEmprestados() {
         for (Usuario usuario : usuarios) {
             System.out.println(usuario.getLivrosEmprestados());
         }
     }
 
+    //achar usuario por codigo
     public Usuario descobrirUsuario (int codUser){
         
         Usuario usuario = null;
@@ -190,14 +181,15 @@ public class Biblioteca {
                         usuario = aluno;
                         break;
               }
-        }
-    }
- } catch (Exception e){
+                }
+            }
+        } catch (Exception e){
         e.printStackTrace();
-    }
+        }
         return usuario;
     }
 
+    //achar livro fisico por id
     public LivroFisico buscarLivroPorId(String id) {
         LivroFisico livroEncontrado = null;
         for(Livro livro : livros){
@@ -212,6 +204,7 @@ public class Biblioteca {
         return livroEncontrado;
     }
 
+    //buscar livro digital por id
     public LivroDigital buscarLivroDigitalPorId(String id){
         LivroDigital livroEncontrado = null;
         for (Livro livro : livros) {
@@ -221,25 +214,24 @@ public class Biblioteca {
                     livroEncontrado = livroDigital;
                     break;
                 }
-
             }
         }
         return livroEncontrado;
     }
 
+    //Imprimir todos os livros cadastrados
     public void ImprimirTodosOsLivros() {
         if (livros.isEmpty()) {
             System.out.println("Não há livros cadastrados.");
         } else {
             System.out.println("Lista de Livros:");
-    
             for (Livro livro : livros) {
                 System.out.println(livro.toString());
             }
         }
     }
 
-
+    //imprimir livros em posse de usuario
     public void imprimirLivrosEmPosse(Usuario u){
         if(u instanceof UsuarioAluno){
             UsuarioAluno aluno = (UsuarioAluno) u;
@@ -266,7 +258,7 @@ public class Biblioteca {
         }
     }
 
-    
+    //mostrar historico de emprestimos de usuario
     public void historicoLivros(Usuario u){
         if(u instanceof UsuarioAluno){
             UsuarioAluno aluno = (UsuarioAluno) u;
@@ -292,14 +284,11 @@ public class Biblioteca {
         }else{
             System.out.println("Não foi possivel encontrar o usuário.");
         }
+    }  
+
+    //baixar livro digital
+    public String baixarLivro(Usuario usuario, LivroDigital livroDigital) {
+        String mensagem = usuario.baixarLivro(livroDigital);
+        return mensagem;
     }
 }
-
-    
-
-
-
-    //buscar livros emprestados por usuario6
-    //buscar livros disponiveis
-    //buscar livros emprestados
-

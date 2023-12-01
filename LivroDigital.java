@@ -1,7 +1,3 @@
-/**
- * Classe LivroDigital
- */
-
 public class LivroDigital extends Livro {
     private String formato;
     private double tamanho;
