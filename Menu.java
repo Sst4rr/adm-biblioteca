@@ -91,12 +91,21 @@ public class Menu {
                         // emprestar livro: primeiro vai mostrar a lista de livros
                         System.out.println(
                                 "==================================\nDigite o nome do livro que você deseja buscar: ");
-                        String nomeBuscar = input.next();
+                        String nomeBuscar = input.nextLine();
                         List<LivroFisico> livroEncontrado = biblioteca.buscarLivroFisico(nomeBuscar);
+
+                        
+                        if (!livroEncontrado.isEmpty()) {
+                            System.out.println("Livros encontrados:");
+                            for (LivroFisico livroEncontradoEmprestimo : livroEncontrado) {
+                                System.out.println("Código: " + livroEncontradoEmprestimo.getCodigo() + " Título: " + livroEncontradoEmprestimo.getTitulo());
+                            }
+                        }
 
                         // depois o usuário vai digitar o respectivo código do livro desejado
                         System.out.println("Informe o livro que deseja com base no seu código: ");
-                        String codigoLivroEscolhido = input.next();
+                        input.nextLine();
+                        String codigoLivroEscolhido = input.nextLine();
                         LivroFisico emprestimo = null;
                         for (LivroFisico livro02 : livroEncontrado) {
                             if (livro02.getCodigo().equals(codigoLivroEscolhido)) {
