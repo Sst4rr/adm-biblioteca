@@ -92,6 +92,7 @@ public class Menu {
                         System.out.println(
                                 "==================================\nDigite o nome do livro que você deseja buscar: ");
                         String nomeBuscar = input.nextLine();
+                        input.nextLine();
                         List<LivroFisico> livroEncontrado = biblioteca.buscarLivroFisico(nomeBuscar);
 
                         
