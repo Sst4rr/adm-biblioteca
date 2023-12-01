@@ -38,19 +38,20 @@ public abstract class Usuario{
 
 
     public void pegarLivro(LivroFisico livro) throws Exception {
-        if (livrosEmprestados.contains(livro)) {
+        if (livrosEmPosse.contains(livro)) {
             throw new Exception("Livro já emprestado para você!");
         } else if (livrosEmprestados.size() >= getMaxLivrosPermitidos()) {
             throw new Exception("Você já possui o número máximo de livros permitidos.");
         } else {
-            livrosEmprestados.add(livro);
+            livrosEmPosse.add(livro);
         }
     }
         
 
 
     public void devolverLivro(LivroFisico livro){
-        livrosEmprestados.remove(livro);
+        livrosEmPosse.remove(livro);
+        livrosEmprestados.add(livro);
         System.out.println("Livro '" + livro.getTitulo() + "' devolvido com sucesso.");
     }
 
@@ -59,7 +60,7 @@ public abstract class Usuario{
 
     public String baixarLivro(LivroDigital livro) {
         livrosBaixados.add(livro);
-        return "Livro '" + livro.getTitulo() + "' baixado com sucesso.";
+        return "Livro" + livro.getTitulo() + "' baixado com sucesso.";
     }
 
     public String livrosEmprestadosToString() {
@@ -71,5 +72,11 @@ public abstract class Usuario{
     }
     
     protected abstract int getMaxLivrosPermitidos();
+
+    //impressão livros em posse
+    
+
+    //impressao livros emprestados 
+
 
 }

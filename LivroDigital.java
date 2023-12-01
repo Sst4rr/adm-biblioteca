@@ -8,8 +8,8 @@ public class LivroDigital extends Livro {
     private String URL;
 
    
-    public LivroDigital(String titulo, String anoPublicacao, String autor, String formato, double tamanho, String URL, String codigo) {
-        super(titulo, anoPublicacao, autor, codigo);
+    public LivroDigital(Livro livro, String formato, double tamanho, String URL) {
+        super(livro.getTitulo(), livro.getAnoPublicacao(), livro.getAutor(), livro.getCodigo());
         this.formato = formato;
         this.tamanho = tamanho;
         this.URL = URL;
@@ -39,8 +39,9 @@ public class LivroDigital extends Livro {
         this.URL = URL;
     }
 
-
-    public String baixarLivro() {
-        return "Livro '" + this.getTitulo() + "' baixado com sucesso do seguinte URL: " + this.URL;
+    //sabemos que a função não tinha que receber parametro, mas a forma que a gente fez, para passar o respectivo link do livro para
+    //o usuario, tivemos que passar paramentro
+    public String baixarLivro(LivroDigital livro) {
+        return "Dowload do arquivo em "+getFormato()+" com o tamanho "+getTamanho()+" será encontrado no seguinte link: "+getURL();
     }
 }
