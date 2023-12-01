@@ -24,13 +24,15 @@ public class Menu {
                     case 0:
 
                         System.out.println("\nDigite o nome do livro que você quer buscar: ");
-                        String buscarLivro = input.nextLine();
                         input.nextLine();
-                        List<LivroFisico> livrosEncontrados01 = biblioteca.buscarLivro(buscarLivro);
-
-                        for (LivroFisico livroEncontrado : livrosEncontrados01) {
-                            System.out.println("Código: " + livroEncontrado.getCodigo() + " Título: "
-                                    + livroEncontrado.getTitulo());
+                        String buscarLivro = input.nextLine();
+                        List<LivroFisico> livrosEncontrados = biblioteca.buscarLivroFisico(buscarLivro);
+                        
+                        if (!livrosEncontrados.isEmpty()) {
+                            System.out.println("Livros encontrados:");
+                            for (LivroFisico livroEncontrado : livrosEncontrados) {
+                                System.out.println("Código: " + livroEncontrado.getCodigo() + " Título: " + livroEncontrado.getTitulo());
+                            }
                         }
                         break;
                     case 1:
@@ -69,8 +71,10 @@ public class Menu {
                         Livro livro01 = new Livro(nome, ano, autor, codigo);
                         biblioteca.adicionarLivro(livro01);
                         LivroFisico livroF01 = new LivroFisico(livro01, exemplaresDisponiveis);
+                        biblioteca.adicionarLivro(livroF01);
                         LivroDigital livroD01 = new LivroDigital(livro01, formatoLivroDigital, tamanhoDoArquivo,
                                 urlLivroDigital);
+                        biblioteca.adicionarLivro(livroD01);
                         // vai dar erro por que vai repetir nome de variável
                         break;
 
@@ -88,13 +92,13 @@ public class Menu {
                         System.out.println(
                                 "==================================\nDigite o nome do livro que você deseja buscar: ");
                         String nomeBuscar = input.next();
-                        List<LivroFisico> livrosEncontrados = biblioteca.buscarLivro(nomeBuscar);
+                        List<LivroFisico> livroEncontrado = biblioteca.buscarLivroFisico(nomeBuscar);
 
                         // depois o usuário vai digitar o respectivo código do livro desejado
                         System.out.println("Informe o livro que deseja com base no seu código: ");
                         String codigoLivroEscolhido = input.next();
                         LivroFisico emprestimo = null;
-                        for (LivroFisico livro02 : livrosEncontrados) {
+                        for (LivroFisico livro02 : livroEncontrado) {
                             if (livro02.getCodigo().equals(codigoLivroEscolhido)) {
                                 emprestimo = livro02;
                                 break;
